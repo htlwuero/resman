@@ -1,6 +1,7 @@
 = Ziel: Spring Boot Applikation mit einer (in-memory) Datenbank verbinden.
 
 notwendige Schritte:
+
 . Dependencies in pom.xml hinzugeben:
 
 [source,xml]
@@ -34,7 +35,7 @@ create table person
 
 . in data-h2.sql Testdaten einfügen:
  z.B.:
- insert into person values (1, 'Test', 'Tester', '2000-01-01');
+`` insert into person values (1, 'Test', 'Tester', '2000-01-01')``;
 
 . Spring mitteilen, dass wir eine Verbindung zu einer Datenbank herstellen wollen + Festlegen auf welche Datenbank (und wie) hinverbunden werden soll.
  Wie?
