@@ -3,7 +3,7 @@
 notwendige Schritte:
 
 . Dependencies in pom.xml hinzugeben:
-
++
 [source,xml]
 ----
 <dependency>
@@ -22,7 +22,7 @@ notwendige Schritte:
 . in schema-h2.sql Definitionen der Tabellen eintragen:
  z.B.:
  drop table if exists person;
-
++
 [source,sql]
 create table person
 (
