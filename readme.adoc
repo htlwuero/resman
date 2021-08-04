@@ -1,0 +1,52 @@
+= Ziel: Spring Boot Applikation mit einer (in-memory) Datenbank verbinden.
+
+notwendige Schritte:
+. Dependencies in pom.xml hinzugeben:
+
+[source,xml]
+----
+<dependency>
+   <groupId>org.springframework.boot</groupId>
+   <artifactId>spring-boot-starter-data-jdbc</artifactId>
+</dependency>
+<dependency>
+   <groupId>com.h2database</groupId>
+   <artifactId>h2</artifactId>
+   <scope>runtime</scope>
+</dependency>
+----
+
+. schema-h2.sql und data-h2.sql unter src/main/resources erstellen.
+
+. in schema-h2.sql Definitionen der Tabellen eintragen:
+ z.B.:
+ drop table if exists person;
+
+[source,sql]
+create table person
+(
+  id integer not null primary key,
+  name varchar,
+  last_name varchar,
+  birth_date date
+);
+
+
+. in data-h2.sql Testdaten einfügen:
+ z.B.:
+ insert into person values (1, 'Test', 'Tester', '2000-01-01');
+
+. Spring mitteilen, dass wir eine Verbindung zu einer Datenbank herstellen wollen + Festlegen auf welche Datenbank (und wie) hinverbunden werden soll.
+ Wie?
+ In der application.properties-Datei unter src/main/resources folgende Properties setzen:
+ spring.datasource.url=jdbc:h2:mem:testdb
+ spring.datasource.username=sa
+ spring.datasource.password=
+ spring.datasource.driver-class-name=org.h2.Driver
+ spring.sql.init.platform=h2
+
+. Entity-Klasse für die Person-Tabelle erstellen (@Id über Feld, welches Primary Key darstellt nicht vergessen). Benötigt Getter und Setter, sowie equals() und hashcode()-Methoden (können mithilfe von IntelliJ generiert werden, Alternative ist Lombok).
+
+. PersonRepository-Interface erstellen (muss Subtyp von PagingAndSortingRepository oder CrudRepository sein). Generischen Parameter (<T>) beachten, der erste Typ muss Entity-Klasse sein und der zweite Typ muss der Typ des Primary-Keys sein, z.B.: PagingAndSortingRepository&lt;Person, Integer&gt;
+
+. Um dieses Repository verwenden zu können, kann man sich eine Instanz dieses Interfaces über die Spring Dependency Injection Funktionalität einfügen lassen (z.B. mittels constructor injection).
