@@ -9,25 +9,6 @@ public class DepartmentPersonRelation {
     private LocalDate validFrom;
     private LocalDate validUntil;
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        DepartmentPersonRelation that = (DepartmentPersonRelation) o;
-        return departmentKey == that.departmentKey && personKey == that.personKey &&
-                Objects.equals(validFrom, that.validFrom) &&
-                Objects.equals(validUntil, that.validUntil);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(departmentKey, personKey, validFrom, validUntil);
-    }
-
     public int getDepartmentKey() {
         return departmentKey;
     }
@@ -59,4 +40,24 @@ public class DepartmentPersonRelation {
     public void setValidUntil(LocalDate validUntil) {
         this.validUntil = validUntil;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        DepartmentPersonRelation that = (DepartmentPersonRelation) o;
+        return departmentKey == that.departmentKey && personKey == that.personKey &&
+                Objects.equals(validFrom, that.validFrom) &&
+                Objects.equals(validUntil, that.validUntil);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(departmentKey, personKey, validFrom, validUntil);
+    }
+
 }

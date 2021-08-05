@@ -1,6 +1,7 @@
 package com.wds.businessorg.resman.domain;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.MappedCollection;
 
 import java.time.LocalDate;
 import java.util.Objects;
@@ -15,6 +16,9 @@ public class Person {
     private String lastName;
 
     private LocalDate birthDate;
+
+    @MappedCollection(idColumn = "PERSON_KEY")
+    private DepartmentPersonRelation departmentPersonRelation;
 
     public int getId() {
         return id;
@@ -65,5 +69,13 @@ public class Person {
     @Override
     public int hashCode() {
         return Objects.hash(id, name, lastName, birthDate);
+    }
+
+    public DepartmentPersonRelation getDepartmentPersonRelation() {
+        return departmentPersonRelation;
+    }
+
+    public void setDepartmentPersonRelation(DepartmentPersonRelation departmentPersonRelation) {
+        this.departmentPersonRelation = departmentPersonRelation;
     }
 }

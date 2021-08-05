@@ -1,4 +1,5 @@
 insert into person (name, last_name, birth_date) values ('Test', 'Tester', '2000-01-01');
+insert into person (name, last_name, birth_date) values ('Test2', 'Tester2', '2000-01-01');
 
 insert into department(name) values('business');
 insert into department(name) values('development');

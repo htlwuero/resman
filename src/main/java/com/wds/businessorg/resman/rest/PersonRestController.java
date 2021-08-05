@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Supplier;
 
 @RestController
 public class PersonRestController {
@@ -17,10 +18,14 @@ public class PersonRestController {
     }
 
     @GetMapping("persons")
-    public List<Person> getPersons() {
-        var persons = new ArrayList<Person>();
+    public List<Person> getPersons(@RequestParam(required = false) Integer departmentId) {
+        List<Person> persons = new ArrayList<>();
 
-        for(Person person: personRepository.findAll()) {
+        Supplier<Iterable<Person>> personSupplier =
+                departmentId == null ? personRepository::findAll :
+                        () -> personRepository.findAllByActiveDepartmentId(departmentId);
+
+        for (Person person : personSupplier.get()) {
             persons.add(person);
         }
 
@@ -40,12 +45,12 @@ public class PersonRestController {
     }
 
     @DeleteMapping("persons/{id}")
-    public void deletePerson(@PathVariable int id){
+    public void deletePerson(@PathVariable int id) {
         personRepository.deleteById(id);
     }
 
     @PutMapping("persons")
-    public Person putPerson(@RequestBody Person updatedPerson){
+    public Person putPerson(@RequestBody Person updatedPerson) {
         return personRepository.save(updatedPerson);
     }
 
