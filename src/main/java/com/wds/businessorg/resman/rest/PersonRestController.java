@@ -2,8 +2,7 @@ package com.wds.businessorg.resman.rest;
 
 import com.wds.businessorg.resman.domain.Person;
 import com.wds.businessorg.resman.persistence.PersonRepository;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +25,28 @@ public class PersonRestController {
         }
 
         return persons;
+    }
+
+    @GetMapping("persons/{id}")
+    public Person getPersonById(@PathVariable int id) {
+        return personRepository.findById(id)
+                .orElse(null);
+    }
+
+    @PostMapping("persons")
+    public Person postPerson(@RequestBody Person personToInsert) {
+        personRepository.save(personToInsert);
+        return personToInsert;
+    }
+
+    @DeleteMapping("persons/{id}")
+    public void deletePerson(@PathVariable int id){
+        personRepository.deleteById(id);
+    }
+
+    @PutMapping("persons")
+    public Person putPerson(@RequestBody Person updatedPerson){
+        return personRepository.save(updatedPerson);
     }
 
 }
