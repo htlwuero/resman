@@ -1,10 +1,11 @@
-insert into person (name, last_name, birth_date) values ('Test', 'Tester', '2000-01-01');
+insert into person(name, last_name, birth_date) values ('Test', 'Tester', '2000-01-01');
 insert into person (name, last_name, birth_date) values ('Test2', 'Tester2', '2000-01-01');
 
 insert into departmentold(name) values('business');
 insert into departmentold(name) values('development');
 
 insert into department_person_relation values(1, 1, '2015-01-01', '2999-12-31');
+insert into department_person_relation values(1, 2, '2015-01-01', '2999-12-31');
 
 insert into gender values(0, 'Weiblich');
 insert into gender values(1, 'Männlich');

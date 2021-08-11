@@ -21,11 +21,22 @@ public class PersonRestController {
     public List<Person> getPersons(@RequestParam(required = false) Integer departmentId) {
         List<Person> persons = new ArrayList<>();
 
+        /*
         Supplier<Iterable<Person>> personSupplier =
-                departmentId == null ? personRepository::findAll :
+                (departmentId == null) ? personRepository::findAll :
                         () -> personRepository.findAllByActiveDepartmentId(departmentId);
 
-        for (Person person : personSupplier.get()) {
+         */
+
+        Iterable<Person> personIterable = null;
+        if(departmentId == null) {
+            personIterable = personRepository.findAll();
+        }
+        else{
+            personIterable = personRepository.findAllByActiveDepartmentId(departmentId);
+        }
+
+        for (Person person : personIterable) {
             persons.add(person);
         }
 
