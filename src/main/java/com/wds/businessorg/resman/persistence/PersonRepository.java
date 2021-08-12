@@ -9,6 +9,7 @@ import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.List;
 
 public interface PersonRepository extends PagingAndSortingRepository<Person, Integer> {
@@ -24,9 +25,11 @@ public interface PersonRepository extends PagingAndSortingRepository<Person, Int
             "where dpr.department_key = :departmentId " +
             "and dpr.valid_from <= current_date " +
             "and dpr.valid_until >= current_date " +
-            "and dpr.person_key = p.id",
+            "and dpr.person_key = p.id " +
+            "and p.birth_date >= :birthDateSince ",
             rowMapperClass = PersonRowMapper.class)
-    List<Person> findAllByActiveDepartmentId(@Param("departmentId") int departmentId);
+    List<Person> findAllByActiveDepartmentId(@Param("departmentId") int departmentId,
+                                             @Param("birthDateSince") LocalDate birthDateSince);
 
     class PersonRowMapper implements RowMapper<Person> {
 

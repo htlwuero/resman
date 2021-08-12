@@ -4,6 +4,7 @@ import com.wds.businessorg.resman.domain.Person;
 import com.wds.businessorg.resman.persistence.PersonRepository;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Supplier;
@@ -18,25 +19,15 @@ public class PersonRestController {
     }
 
     @GetMapping("persons")
-    public List<Person> getPersons(@RequestParam(required = false) Integer departmentId) {
+    public List<Person> getPersons(@RequestParam(required = false) Integer departmentId,
+                                   @RequestParam(required = false) String birthDateSince) {
         List<Person> persons = new ArrayList<>();
-
-        /*
+        String birthDate = birthDateSince == null ? "0001-01-01" : birthDateSince;
         Supplier<Iterable<Person>> personSupplier =
-                (departmentId == null) ? personRepository::findAll :
-                        () -> personRepository.findAllByActiveDepartmentId(departmentId);
+                departmentId == null ? personRepository::findAll :
+                        () -> personRepository.findAllByActiveDepartmentId(departmentId, LocalDate.parse(birthDate));
 
-         */
-
-        Iterable<Person> personIterable = null;
-        if(departmentId == null) {
-            personIterable = personRepository.findAll();
-        }
-        else{
-            personIterable = personRepository.findAllByActiveDepartmentId(departmentId);
-        }
-
-        for (Person person : personIterable) {
+        for (Person person : personSupplier.get()) {
             persons.add(person);
         }
 
