@@ -1,13 +1,13 @@
 drop table if exists person;
 drop table if exists departmentold;
 drop table if exists department_person_relation;
-drop table if exists employee;
-drop table if exists gender;
-drop table if exists department;
-drop table if exists department_employee_relation;
-drop table if exists project;
-drop table if exists project_employee_relation;
-drop table if exists communication;
+drop table if exists employee cascade ;
+drop table if exists gender cascade;
+drop table if exists department cascade;
+drop table if exists department_employee_relation cascade;
+drop table if exists project cascade;
+drop table if exists project_employee_relation cascade;
+drop table if exists communication cascade;
 
 create table person
 (
