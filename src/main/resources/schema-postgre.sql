@@ -51,8 +51,8 @@ CREATE TABLE "department" (
 
 CREATE TABLE "department_employee_relation" (
                                                 "department_employee_relation_id" SERIAL PRIMARY KEY,
-                                                "department_id" int,
-                                                "employee_id" int,
+                                                "department_key" int,
+                                                "employee_key" int,
                                                 "valid_from" date,
                                                 "valid_to" date
 );
@@ -67,8 +67,8 @@ CREATE TABLE "project" (
 
 CREATE TABLE "project_employee_relation" (
                                              "project_employee_relation_id" SERIAL PRIMARY KEY,
-                                             "project_id" int,
-                                             "employee_id" int,
+                                             "project_key" int,
+                                             "employee_key" int,
                                              "entry_date_project" date,
                                              "exit_date_project" date
 );
@@ -82,13 +82,13 @@ CREATE TABLE "communication" (
                                  "valid_to" date
 );
 
-ALTER TABLE "department_employee_relation" ADD FOREIGN KEY ("department_id") REFERENCES "department" ("department_id");
+ALTER TABLE "department_employee_relation" ADD FOREIGN KEY ("department_key") REFERENCES "department" ("department_id");
 
-ALTER TABLE "department_employee_relation" ADD FOREIGN KEY ("employee_id") REFERENCES "employee" ("employee_id");
+ALTER TABLE "department_employee_relation" ADD FOREIGN KEY ("employee_key") REFERENCES "employee" ("employee_id");
 
-ALTER TABLE "project_employee_relation" ADD FOREIGN KEY ("project_id") REFERENCES "project" ("project_id");
+ALTER TABLE "project_employee_relation" ADD FOREIGN KEY ("project_key") REFERENCES "project" ("project_id");
 
-ALTER TABLE "project_employee_relation" ADD FOREIGN KEY ("employee_id") REFERENCES "employee" ("employee_id");
+ALTER TABLE "project_employee_relation" ADD FOREIGN KEY ("employee_key") REFERENCES "employee" ("employee_id");
 
 ALTER TABLE "communication" ADD FOREIGN KEY ("employee_id") REFERENCES "employee" ("employee_id");
 
