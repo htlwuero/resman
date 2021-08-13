@@ -2,12 +2,14 @@ package com.wds.businessorg.resman.rest;
 
 import com.wds.businessorg.resman.domain.Employee;
 import com.wds.businessorg.resman.persistence.EmployeeRepository;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@CrossOrigin(value = "*")
 @RestController
 public class EmployeeRestController {
 
