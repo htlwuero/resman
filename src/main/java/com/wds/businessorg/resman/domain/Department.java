@@ -15,12 +15,12 @@ import java.util.Collection;
 @With
 public class Department {
     @Id
-    private int department_id;
+    private int departmentId;
 
     private String department;
 
-    @MappedCollection(idColumn = "department_key")
-    private Collection<DepartmentPersonRelation> persons;
+    @MappedCollection(idColumn = "DEPARTMENT_KEY")
+    private Collection<DepartmentEmployeeRelation> departmentEmployeeRelations;
 
 
 
