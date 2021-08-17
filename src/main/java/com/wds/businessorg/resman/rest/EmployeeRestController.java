@@ -1,13 +1,14 @@
 package com.wds.businessorg.resman.rest;
 
 import com.wds.businessorg.resman.domain.Employee;
+import com.wds.businessorg.resman.domain.Person;
 import com.wds.businessorg.resman.persistence.EmployeeRepository;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Supplier;
 
 @CrossOrigin(value = "*")
 @RestController
@@ -20,14 +21,17 @@ public class EmployeeRestController {
     }
 
     @GetMapping("/employees")
-    List<Employee> getAllEmployees(){
-        var employees = new ArrayList<Employee>();
-        Iterable<Employee> employeeIterable = this.employeeRepository.findAll();
-        for (Employee employee : employeeIterable) {
+    List<Employee> getAllEmployees(@RequestParam(required = false) Integer departmentId){
+        List<Employee> employees = new ArrayList<>();
+        Supplier<Iterable<Employee>> employeeSupplier =
+                departmentId == null ? employeeRepository::findAll :
+                        () -> employeeRepository.findAllByActiveDepartmentId(departmentId);
+
+        for (Employee employee : employeeSupplier.get()) {
             employees.add(employee);
         }
-        return employees;
 
+        return employees;
     }
 
 }

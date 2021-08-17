@@ -13,38 +13,36 @@ import java.time.LocalDate;
 import java.util.List;
 
 public interface EmployeeRepository extends PagingAndSortingRepository<Employee,Integer> {
-    @Query(value = "select p.id,  " +
-            "p.firstName, " +
-            "p.lastName, " +
-            "p.birthDate, " +
+    @Query(value = "select p.employee_id,  " +
+            "p.first_name, " +
+            "p.last_name, " +
+            "p.birth_date, " +
             "dpr.department_key, " +
-            "dpr.entryDate, " +
-            "dpr.exitDate, " +
-            "dpr.valid_until from person p, department_person_relation dpr "+
+            "dpr.employee_key, " +
+            "p.entry_date, " +
+            "p.exit_date, " +
+            "dpr.valid_from, " +
+            "dpr.valid_to from employee p, department_employee_relation dpr "+
             "where dpr.department_key = :departmentId " +
-            "and dpr.valid_from <= current_date " +
-            "and dpr.valid_until >= current_date " +
-            "and dpr.person_key = p.id " +
-            "and p.birth_date >= :birthDateSince ",
-            rowMapperClass = PersonRepository.PersonRowMapper.class)
-    List<Employee> findAllByActiveDepartmentId(@Param("departmentId") int departmentId,
-                                             @Param("birthDateSince") LocalDate birthDateSince);
+            "and dpr.employee_key = p.employee_id ",
+            rowMapperClass = EmployeeRowMapper.class)
+    List<Employee> findAllByActiveDepartmentId(@Param("departmentId") int departmentId);
 
-    class PersonRowMapper implements RowMapper<Employee> {
+    class EmployeeRowMapper implements RowMapper<Employee> {
 
         @Override
         public Employee mapRow(ResultSet rs, int rowNum) throws SQLException {
             Employee employee = new Employee();
-            employee.setEmployeeId(rs.getInt("id"));
-            employee.setFirstName(rs.getString("firstName"));
+            employee.setEmployeeId(rs.getInt("employee_id"));
+            employee.setFirstName(rs.getString("first_name"));
             employee.setLastName(rs.getString("last_name"));
-            employee.setBirthDate(rs.getDate("birthDate").toLocalDate());
+            employee.setBirthDate(rs.getDate("birth_date").toLocalDate());
 
             DepartmentEmployeeRelation DepartmentEmployeeRelation = new DepartmentEmployeeRelation();
             DepartmentEmployeeRelation.setDepartmentKey(rs.getInt("department_key"));
-            DepartmentEmployeeRelation.setEmployeeKey(rs.getInt("person_key"));
+            DepartmentEmployeeRelation.setEmployeeKey(rs.getInt("employee_key"));
             DepartmentEmployeeRelation.setValidFrom(rs.getDate("valid_from").toLocalDate());
-            DepartmentEmployeeRelation.setValidTo(rs.getDate("valid_until").toLocalDate());
+            DepartmentEmployeeRelation.setValidTo(rs.getDate("valid_to").toLocalDate());
 
             employee.setDepartmentEmployeeRelation(DepartmentEmployeeRelation);
 
