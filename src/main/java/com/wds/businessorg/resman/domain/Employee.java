@@ -1,16 +1,23 @@
 package com.wds.businessorg.resman.domain;
 
+import org.springframework.data.relational.core.mapping.MappedCollection;
+
 import java.time.LocalDate;
 import java.util.Objects;
 
 public class Employee {
-           private int  employeeId;
-           private String firstName;
-           private String lastName;
-           private LocalDate birthDate;
-           private LocalDate entryDate;
-           private LocalDate exitDate;
-           private int genderId;
+
+    private int  employeeId;
+    private String firstName;
+    private String lastName;
+    private LocalDate birthDate;
+    private LocalDate entryDate;
+    private LocalDate exitDate;
+    private int genderId;
+
+
+    @MappedCollection(idColumn = "employee_key")
+    private DepartmentEmployeeRelation departmentEmployeeRelation;
 
     public int getEmployeeId() {
         return employeeId;
@@ -79,5 +86,8 @@ public class Employee {
     @Override
     public int hashCode() {
         return Objects.hash(employeeId, firstName, lastName, birthDate, entryDate, exitDate, genderId);
+    }
+    public void setDepartmentEmployeeRelation(DepartmentEmployeeRelation departmentEmployeeRelation) {
+        this.departmentEmployeeRelation = departmentEmployeeRelation;
     }
 }
