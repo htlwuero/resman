@@ -3,6 +3,7 @@ drop table if exists departmentold;
 drop table if exists department_person_relation;
 drop table if exists employee cascade ;
 drop table if exists gender cascade;
+drop table if exists communication_type cascade;
 drop table if exists department cascade;
 drop table if exists department_employee_relation cascade;
 drop table if exists project cascade;
@@ -44,6 +45,11 @@ CREATE TABLE "gender" (
                           "gender" varchar
 );
 
+CREATE TABLE "communication_type" (
+                          "communication_type_id" SERIAL PRIMARY KEY,
+                          "communication_type" varchar
+);
+
 CREATE TABLE "department" (
                               "department_id" SERIAL PRIMARY KEY,
                               "department" varchar
@@ -62,7 +68,7 @@ CREATE TABLE "project" (
                            "project_name" varchar,
                            "project_start_date" date,
                            "project_end_date" date,
-                           "project_leader" varchar
+                           "employee_id" int
 );
 
 CREATE TABLE "project_employee_relation" (
@@ -76,7 +82,7 @@ CREATE TABLE "project_employee_relation" (
 CREATE TABLE "communication" (
                                  "communication_id" SERIAL PRIMARY KEY,
                                  "employee_id" int,
-                                 "communication_type" varchar,
+                                 "communication_type_id" int,
                                  "communication_value" varchar,
                                  "valid_from" date,
                                  "valid_to" date
@@ -93,4 +99,8 @@ ALTER TABLE "project_employee_relation" ADD FOREIGN KEY ("employee_key") REFEREN
 ALTER TABLE "communication" ADD FOREIGN KEY ("employee_id") REFERENCES "employee" ("employee_id");
 
 ALTER TABLE "employee" ADD FOREIGN KEY ("gender_id") REFERENCES "gender" ("gender_id");
+
+ALTER TABLE "project" ADD FOREIGN KEY ("employee_id") REFERENCES "employee" ("employee_id");
+
+ALTER TABLE "communication" ADD FOREIGN KEY ("communication_type_id") REFERENCES "communication_type" ("communication_type_id");
 

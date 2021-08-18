@@ -11,6 +11,9 @@ insert into gender values(0, 'Weiblich');
 insert into gender values(1, 'Männlich');
 insert into gender values(2, 'Divers');
 
+insert into communicationType values(0, 'email');
+insert into communicationType values(1, 'phone_number');
+
 insert into employee(first_name, last_name, birth_date, entry_date, exit_date, gender_id) values('test1','test1.2','1111-01-02', '1111-01-02', '1111-01-02', 1);
 insert into employee(first_name, last_name, birth_date, entry_date, exit_date, gender_id) values('test2','test2','1111-01-02', '1111-01-02', '1111-01-02', 1);
 insert into employee(first_name, last_name, birth_date, entry_date, exit_date, gender_id) values('test3','tes3','1111-01-02', '1111-01-02', '1111-01-02', 1);
