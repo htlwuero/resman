@@ -1,9 +1,11 @@
 package com.wds.businessorg.resman.rest;
 
 import com.wds.businessorg.resman.domain.Department;
+import com.wds.businessorg.resman.domain.Person;
 import com.wds.businessorg.resman.persistence.DepartmentRepository;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
@@ -29,5 +31,11 @@ public class DepartmentRestController {
 
         return departments;
     }
+    @GetMapping("departments/{id}")
+    public Department getDepartmentById(@PathVariable int id) {
+        return departmentRepository.findById(id)
+                .orElse(null);
+    }
+
 
 }
