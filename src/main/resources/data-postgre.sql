@@ -36,12 +36,12 @@ insert into employee(first_name, last_name, birth_date, entry_date, exit_date, g
 insert into employee(first_name, last_name, birth_date, entry_date, exit_date, gender_id) values('Babara','Podolan','1979-04-02', '2018-06-02', '2027-01-09', 0);
 insert into employee(first_name, last_name, birth_date, entry_date, exit_date, gender_id) values('Sahra','Lidl','2001-11-30', '1111-01-02', '2038-01-09', 0);
 
-insert into project( project_name, project_start_date, project_end_date, employee_id) values('Kundenberatungszone', '2021-05-08', '2021-11-20', '1');
-insert into project( project_name, project_start_date, project_end_date, employee_id) values('Recourcenmanagment', '2021-07-11', '2021-10-25', '21');
-insert into project( project_name, project_start_date, project_end_date, employee_id) values('Interspar_Website', '2021-02-20', '2021-09-30', '15');
-insert into project( project_name, project_start_date, project_end_date, employee_id) values('Fahrrad_Versicherung ', '2021-04-29', '2021-08-27', '9');
-insert into project( project_name, project_start_date, project_end_date, employee_id) values('Foyee_umbauen', '2021-01-07', '2021-01-08', '18');
-insert into project( project_name, project_start_date, project_end_date, employee_id) values('Neue_Werbekampangne', '2021-12-12', '2022-01-30', '3');
+insert into project( project_name, project_start_date, project_end_date, employee_id) values('Kundenberatungszone', '2021-05-08', '2021-11-20', 1);
+insert into project( project_name, project_start_date, project_end_date, employee_id) values('Recourcenmanagment', '2021-07-11', '2021-10-25', 21);
+insert into project( project_name, project_start_date, project_end_date, employee_id) values('Interspar_Website', '2021-02-20', '2021-09-30', 15);
+insert into project( project_name, project_start_date, project_end_date, employee_id) values('Fahrrad_Versicherung ', '2021-04-29', '2021-08-27', 9);
+insert into project( project_name, project_start_date, project_end_date, employee_id) values('Foyee_umbauen', '2021-01-07', '2021-01-08', 18);
+insert into project( project_name, project_start_date, project_end_date, employee_id) values('Neue_Werbekampangne', '2021-12-12', '2022-01-30', 3);
 
 insert into project_employee_relation( project_key, employee_key, entry_date_project, exit_date_project) values( 2, 1, '1111-01-02', '1111-01-02');
 insert into project_employee_relation( project_key, employee_key, entry_date_project, exit_date_project) values( 6, 2, '1111-01-02', '1111-01-02');

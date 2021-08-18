@@ -17,6 +17,6 @@ public class Project {
     private String projectName;
     private LocalDate projectStartDate;
     private LocalDate projectEndDate;
-    private String employeeId;
+    private int employeeId;
 
 }
