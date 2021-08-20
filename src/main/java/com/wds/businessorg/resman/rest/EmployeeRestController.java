@@ -33,5 +33,9 @@ public class EmployeeRestController {
 
         return employees;
     }
-
+    @GetMapping("employees/{id}")
+    public Employee getEmployeeById(@PathVariable int id) {
+        return employeeRepository.findById(id)
+                .orElse(null);
+    }
 }
