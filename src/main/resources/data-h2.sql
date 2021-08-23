@@ -35,6 +35,9 @@ insert into employee(first_name, last_name, birth_date, entry_date, exit_date, g
 insert into employee(first_name, last_name, birth_date, entry_date, exit_date, gender_id) values('Thomas','Müller','1989-09-13', '2013-09-01', '2022-01-05', 1);
 insert into employee(first_name, last_name, birth_date, entry_date, exit_date, gender_id) values('Babara','Podolan','1979-04-02', '2018-06-02', '2027-01-09', 0);
 insert into employee(first_name, last_name, birth_date, entry_date, exit_date, gender_id) values('Sahra','Lidl','2001-11-30', '1111-01-02', '2038-01-09', 0);
+insert into employee(first_name, last_name, birth_date, entry_date, exit_date, gender_id) values('Conchita','Wurst','1988-11-06', '2006-01-02', '2009-01-09', 2);
+insert into employee(first_name, last_name, birth_date, entry_date, exit_date, gender_id) values('Frenckie','De Jong','1997-05-12', '2019-06-01', '2025-06-03', 1);
+
 
 insert into project( project_name, project_start_date, project_end_date, employee_id) values('Kundenberatungszone', '2021-05-08', '2021-11-20', 1);
 insert into project( project_name, project_start_date, project_end_date, employee_id) values('Recourcenmanagment', '2021-07-11', '2021-10-25', 21);
@@ -43,12 +46,12 @@ insert into project( project_name, project_start_date, project_end_date, employe
 insert into project( project_name, project_start_date, project_end_date, employee_id) values('Foyee_umbauen', '2021-01-07', '2021-01-08', 18);
 insert into project( project_name, project_start_date, project_end_date, employee_id) values('Neue_Werbekampangne', '2021-12-12', '2022-01-30', 3);
 
-insert into project_employee_relation( project_key, employee_key, entry_date_project, exit_date_project) values( 2, 1, '1111-01-02', '1111-01-02');
-insert into project_employee_relation( project_key, employee_key, entry_date_project, exit_date_project) values( 6, 2, '1111-01-02', '1111-01-02');
-insert into project_employee_relation( project_key, employee_key, entry_date_project, exit_date_project) values( 3, 3, '1111-01-02', '1111-01-02');
-insert into project_employee_relation( project_key, employee_key, entry_date_project, exit_date_project) values( 4, 4, '1111-01-02', '1111-01-02');
-insert into project_employee_relation( project_key, employee_key, entry_date_project, exit_date_project) values( 5, 5, '1111-01-02', '1111-01-02');
-insert into project_employee_relation( project_key, employee_key, entry_date_project, exit_date_project) values( 6, 6, '1111-01-02', '1111-01-02');
+insert into project_employee_relation( project_key, employee_key, entry_date_project, exit_date_project) values( 2, 1, '2020-01-02', '1111-01-02');
+insert into project_employee_relation( project_key, employee_key, entry_date_project, exit_date_project) values( 6, 2, '2020-01-02', '1111-01-02');
+insert into project_employee_relation( project_key, employee_key, entry_date_project, exit_date_project) values( 3, 3, '2020-01-02', '1111-01-02');
+insert into project_employee_relation( project_key, employee_key, entry_date_project, exit_date_project) values( 4, 4, '2020-01-02', '1111-01-02');
+insert into project_employee_relation( project_key, employee_key, entry_date_project, exit_date_project) values( 5, 5, '2020-01-02', '1111-01-02');
+insert into project_employee_relation( project_key, employee_key, entry_date_project, exit_date_project) values( 6, 6, '2020-01-02', '1111-01-02');
 insert into project_employee_relation( project_key, employee_key, entry_date_project, exit_date_project) values( 2, 7, '2014-03-10', '2040-01-02');
 insert into project_employee_relation( project_key, employee_key, entry_date_project, exit_date_project) values( 3, 8, '2021-08-10', '2024-07-10');
 insert into project_employee_relation( project_key, employee_key, entry_date_project, exit_date_project) values( 6, 9, '2021-08-15', '2028-01-24');
@@ -58,12 +61,14 @@ insert into project_employee_relation( project_key, employee_key, entry_date_pro
 insert into project_employee_relation( project_key, employee_key, entry_date_project, exit_date_project) values( 2, 13, '1992-08-13', '2031-12-11');
 insert into project_employee_relation( project_key, employee_key, entry_date_project, exit_date_project) values( 5, 14, '2010-05-15', '2039-04-20');
 insert into project_employee_relation( project_key, employee_key, entry_date_project, exit_date_project) values( 1, 15, '2000-01-02', '2030-01-02');
-insert into project_employee_relation( project_key, employee_key, entry_date_project, exit_date_project) values( 2, 16, '2000-01-02', '2030-01-02');
+insert into project_employee_relation( project_key, employee_key, entry_date_project, exit_date_project) values( 2, 16, '2020-01-02', '2030-01-02');
 insert into project_employee_relation( project_key, employee_key, entry_date_project, exit_date_project) values( 3, 17, '2000-01-02', '2030-01-02');
 insert into project_employee_relation( project_key, employee_key, entry_date_project, exit_date_project) values( 4, 18, '2000-01-02', '2030-01-02');
 insert into project_employee_relation( project_key, employee_key, entry_date_project, exit_date_project) values( 5, 19, '2000-01-02', '2030-01-02');
 insert into project_employee_relation( project_key, employee_key, entry_date_project, exit_date_project) values( 6, 20, '2000-01-02', '2030-01-02');
-insert into project_employee_relation( project_key, employee_key, entry_date_project, exit_date_project) values( 4, 21, '2000-01-02', '2030-01-02');
+insert into project_employee_relation( project_key, employee_key, entry_date_project, exit_date_project) values( 4, 21, '2020-01-02', '2030-01-02');
+insert into project_employee_relation( project_key, employee_key, entry_date_project, exit_date_project) values( 1, 22, '2020-01-02', '2030-01-02');
+insert into project_employee_relation( project_key, employee_key, entry_date_project, exit_date_project) values( 6, 23, '2020-01-02', '2030-01-02');
 
 insert into communication( employee_id, communication_type_id, communication_value, valid_from, valid_to) values( 1, '0', 'fabian.linder.student@htl-hallein.at', '2021-07-26', '2022-12-31');
 insert into communication( employee_id, communication_type_id, communication_value, valid_from, valid_to) values( 1, '1', '+43 660 2057848', '2021-07-26', '2022-12-31');
@@ -76,7 +81,7 @@ insert into communication( employee_id, communication_type_id, communication_val
 insert into communication( employee_id, communication_type_id, communication_value, valid_from, valid_to) values( 6, '0', 'juliaeibl.11@gmail.com', '2018-09-02', '2024-12-31');
 insert into communication( employee_id, communication_type_id, communication_value, valid_from, valid_to) values( 7, '0', 'max.hofer@wuero.com', '2014-03-10', '2024-03-10');
 insert into communication( employee_id, communication_type_id, communication_value, valid_from, valid_to) values( 7, '1', '+43 057 070 111', '2014-03-10', '2024-03-10');
-insert into communication( employee_id, communication_type_id, communication_value, valid_from, valid_to) values( 8, '0', 'lionel.mes@wuero.com', '2021-08-10', '2024-07-10');
+insert into communication( employee_id, communication_type_id, communication_value, valid_from, valid_to) values( 8, '0', 'lionel.messi@psg.com', '2021-08-10', '2024-07-10');
 insert into communication( employee_id, communication_type_id, communication_value, valid_from, valid_to) values( 8, '1', '+43 057 070 112', '2021-08-10', '2024-07-10');
 insert into communication( employee_id, communication_type_id, communication_value, valid_from, valid_to) values( 9, '0', 'jack.miller@wuero.com', '2021-08-15', '2028-01-24');
 insert into communication( employee_id, communication_type_id, communication_value, valid_from, valid_to) values( 9, '1', '+43 057 070 113', '2021-08-15', '2028-01-24');
@@ -97,6 +102,8 @@ insert into communication( employee_id, communication_type_id, communication_val
 insert into communication( employee_id, communication_type_id, communication_value, valid_from, valid_to) values( 19, '1', '+43 660 546410871', '2003-01-02', '2025-01-02');
 insert into communication( employee_id, communication_type_id, communication_value, valid_from, valid_to) values( 20, '0', 'Babara.Podolan@outlook.com', '2008-01-02', '2070-01-02');
 insert into communication( employee_id, communication_type_id, communication_value, valid_from, valid_to) values( 21, '0', 'Sahra-Lidl@gmx.com', '2010-01-02', '2050-01-02');
+insert into communication( employee_id, communication_type_id, communication_value, valid_from, valid_to) values( 22, '0', 'Conchita.W@gmx.com', '2015-04-02', '2044-01-02');
+insert into communication( employee_id, communication_type_id, communication_value, valid_from, valid_to) values( 18, '0', 'Frenkie.deJong@gmail.com', '2018-01-02', '2046-01-02');
 
 insert into department(department) values('business');
 insert into department(department) values('development');
@@ -125,6 +132,6 @@ insert into department_employee_relation( department_key, employee_key, valid_fr
 insert into department_employee_relation( department_key, employee_key, valid_from, valid_to) values( 2, 19, '2000-01-02', '2080-01-02');
 insert into department_employee_relation( department_key, employee_key, valid_from, valid_to) values( 5, 20, '2000-01-02', '2080-01-02');
 insert into department_employee_relation( department_key, employee_key, valid_from, valid_to) values( 4, 21, '2000-01-02', '2080-01-02');
-
-
+insert into department_employee_relation( department_key, employee_key, valid_from, valid_to) values( 5, 22, '2006-01-02', '2009-06-09');
+insert into department_employee_relation( department_key, employee_key, valid_from, valid_to) values( 1, 23, '2018-01-02', '2035-06-09');
 
