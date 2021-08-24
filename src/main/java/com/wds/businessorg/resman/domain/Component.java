@@ -8,9 +8,8 @@ import org.springframework.data.annotation.Id;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Skills {
+public class Component {
     @Id
-    private int  skillsId;
-    private String name;
+    private int  componentId;
+    private byte[] content;
 }
-
