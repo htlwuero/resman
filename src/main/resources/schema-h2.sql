@@ -50,11 +50,11 @@ CREATE TABLE `department` (
 );
 
 CREATE TABLE `department_employee_relation` (
-                                                `department_id` int,
-                                                `employee_id` int,
+                                                `department_key` int,
+                                                `employee_key` int,
                                                 `valid_from` date,
                                                 `valid_to` date,
-                                                `stelle_id` int
+                                                `position_id` int
 );
 
 CREATE TABLE `project` (
@@ -62,13 +62,13 @@ CREATE TABLE `project` (
                            `project_name` varchar(255),
                            `project_start_date` date,
                            `project_end_date` date,
-                           `project_leader` varchar(255)
+                           `project_lead_employee_id` int
 );
 
 CREATE TABLE `project_employee_relation` (
                                              `project_employee_relation_id` int PRIMARY KEY AUTO_INCREMENT,
-                                             `project_id` int,
-                                             `employee_id` int,
+                                             `project_key` int,
+                                             `employee_key` int,
                                              `entry_date_project` date,
                                              `exit_date_project` date
 );
@@ -76,7 +76,7 @@ CREATE TABLE `project_employee_relation` (
 CREATE TABLE `communication` (
                                  `communication_id` int PRIMARY KEY AUTO_INCREMENT,
                                  `employee_id` int,
-                                 `communication_type` varchar(255),
+                                 `communication_type_id` int,
                                  `communication_value` varchar(255),
                                  `valid_from` date,
                                  `valid_to` date
@@ -93,62 +93,69 @@ CREATE TABLE `image_entity_relation` (
                                          `entity_type` varchar(255)
 );
 
-CREATE TABLE `skills` (
-                          `skills_id` int PRIMARY KEY AUTO_INCREMENT,
-                          `name` varchar(255)
+CREATE TABLE `skill` (
+                         `skill_id` int PRIMARY KEY AUTO_INCREMENT,
+                         `name` varchar(255)
 );
 
-CREATE TABLE `skills_employee_relation` (
-                                            `skills_id` int,
-                                            `employee_id` int
+CREATE TABLE `skill_employee_relation` (
+                                           `skill_id` int,
+                                           `employee_key` int
 );
 
-CREATE TABLE `ausbildung` (
-                              `ausbildung_id` int PRIMARY KEY AUTO_INCREMENT,
-                              `name` varchar(255)
+CREATE TABLE `training` (
+                            `training_id` int PRIMARY KEY AUTO_INCREMENT,
+                            `name` varchar(255)
 );
 
-CREATE TABLE `ausbildung_entity_relation` (
-                                              `ausbildung_id` int,
-                                              `employee_id` int,
-                                              `planed_from` date,
-                                              `planed_to` date,
-                                              `finished` boolean
+CREATE TABLE `training_entity_relation` (
+                                            `training_id` int,
+                                            `employee_id` int,
+                                            `planed_from` date,
+                                            `planed_to` date,
+                                            `finished` boolean
 );
 
-CREATE TABLE `komponenten` (
-                               `komponenten_id` int PRIMARY KEY AUTO_INCREMENT,
-                               `content` blob
+CREATE TABLE `component` (
+                             `component_id` int PRIMARY KEY AUTO_INCREMENT,
+                             `content` blob
 );
 
-CREATE TABLE `komponenten_department_relation` (
-                                                   `komponenten_id` int,
-                                                   `department_id` int
+CREATE TABLE `component_department_relation` (
+                                                 `component_id` int,
+                                                 `department_id` int
 );
 
-CREATE TABLE `komponenten_employee_relation` (
-                                                 `komponenten_id` int,
-                                                 `employee_id` int
+CREATE TABLE `component_employee_relation` (
+                                               `component_id` int,
+                                               `employee_id` int
 );
 
-CREATE TABLE `stelle` (
-                          `stelle_id` int,
-                          `name` varchar(255)
+CREATE TABLE `position` (
+                            `position_id` int,
+                            `name` varchar(255)
 );
 
-ALTER TABLE `department_employee_relation` ADD FOREIGN KEY (`department_id`) REFERENCES `department` (`department_id`);
+CREATE TABLE `communication_type` (
+                                      `communication_type_id` int,
+                                      `communication_type` varchar(255)
+);
 
-ALTER TABLE `department_employee_relation` ADD FOREIGN KEY (`employee_id`) REFERENCES `employee` (`employee_id`);
+ALTER TABLE `department_employee_relation` ADD FOREIGN KEY (`department_key`) REFERENCES `department` (`department_id`);
 
-ALTER TABLE `department_employee_relation` ADD FOREIGN KEY (`stelle_id`) REFERENCES `stelle` (`stelle_id`);
+ALTER TABLE `department_employee_relation` ADD FOREIGN KEY (`employee_key`) REFERENCES `employee` (`employee_id`);
 
-ALTER TABLE `project_employee_relation` ADD FOREIGN KEY (`project_id`) REFERENCES `project` (`project_id`);
+ALTER TABLE `department_employee_relation` ADD FOREIGN KEY (`position_id`) REFERENCES `position` (`position_id`);
 
-ALTER TABLE `project_employee_relation` ADD FOREIGN KEY (`employee_id`) REFERENCES `employee` (`employee_id`);
+ALTER TABLE `project_employee_relation` ADD FOREIGN KEY (`project_key`) REFERENCES `project` (`project_id`);
+
+ALTER TABLE `project_employee_relation` ADD FOREIGN KEY (`employee_key`) REFERENCES `employee` (`employee_id`);
 
 ALTER TABLE `communication` ADD FOREIGN KEY (`employee_id`) REFERENCES `employee` (`employee_id`);
 
-ALTER TABLE `gender` ADD FOREIGN KEY (`gender_id`) REFERENCES `employee` (`gender_id`);
+ALTER TABLE `employee` ADD FOREIGN KEY (`gender_id`) REFERENCES `gender` (`gender_id`);
+
+ALTER TABLE `communication` ADD FOREIGN KEY (`communication_type_id`) REFERENCES `communication_type` (`communication_type_id`);
 
 ALTER TABLE `image` ADD FOREIGN KEY (`image_id`) REFERENCES `image_entity_relation` (`image_id`);
 
@@ -156,18 +163,20 @@ ALTER TABLE `image_entity_relation` ADD FOREIGN KEY (`entity_id`) REFERENCES `em
 
 ALTER TABLE `image_entity_relation` ADD FOREIGN KEY (`entity_id`) REFERENCES `department` (`department_id`);
 
-ALTER TABLE `skills_employee_relation` ADD FOREIGN KEY (`skills_id`) REFERENCES `skills` (`skills_id`);
+ALTER TABLE `skill_employee_relation` ADD FOREIGN KEY (`skill_id`) REFERENCES `skill` (`skill_id`);
 
-ALTER TABLE `skills_employee_relation` ADD FOREIGN KEY (`employee_id`) REFERENCES `employee` (`employee_id`);
+ALTER TABLE `skill_employee_relation` ADD FOREIGN KEY (`employee_key`) REFERENCES `employee` (`employee_id`);
 
-ALTER TABLE `ausbildung_entity_relation` ADD FOREIGN KEY (`ausbildung_id`) REFERENCES `ausbildung` (`ausbildung_id`);
+ALTER TABLE `training_entity_relation` ADD FOREIGN KEY (`training_id`) REFERENCES `training` (`training_id`);
 
-ALTER TABLE `ausbildung_entity_relation` ADD FOREIGN KEY (`employee_id`) REFERENCES `employee` (`employee_id`);
+ALTER TABLE `training_entity_relation` ADD FOREIGN KEY (`employee_id`) REFERENCES `employee` (`employee_id`);
 
-ALTER TABLE `komponenten_employee_relation` ADD FOREIGN KEY (`employee_id`) REFERENCES `employee` (`employee_id`);
+ALTER TABLE `component_employee_relation` ADD FOREIGN KEY (`employee_id`) REFERENCES `employee` (`employee_id`);
 
-ALTER TABLE `komponenten_department_relation` ADD FOREIGN KEY (`department_id`) REFERENCES `department` (`department_id`);
+ALTER TABLE `project` ADD FOREIGN KEY (`project_lead_employee_id`) REFERENCES `employee` (`employee_id`);
 
-ALTER TABLE `komponenten_employee_relation` ADD FOREIGN KEY (`komponenten_id`) REFERENCES `komponenten` (`komponenten_id`);
+ALTER TABLE `component_department_relation` ADD FOREIGN KEY (`department_id`) REFERENCES `department` (`department_id`);
 
-ALTER TABLE `komponenten_department_relation` ADD FOREIGN KEY (`komponenten_id`) REFERENCES `komponenten` (`komponenten_id`);
+ALTER TABLE `component_employee_relation` ADD FOREIGN KEY (`component_id`) REFERENCES `component` (`component_id`);
+
+ALTER TABLE `component_department_relation` ADD FOREIGN KEY (`component_id`) REFERENCES `component` (`component_id`);

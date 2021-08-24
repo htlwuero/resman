@@ -27,5 +27,6 @@ public class Employee {
     @MappedCollection(idColumn = "employee_key")
     private DepartmentEmployeeRelation departmentEmployeeRelation;
 
-
+    @MappedCollection(idColumn = "employee_key")
+    private SkillEmployeeRelation skillEmployeeRelation;
 }
