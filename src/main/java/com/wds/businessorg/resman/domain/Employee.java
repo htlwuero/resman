@@ -22,11 +22,16 @@ public class Employee {
     private LocalDate entryDate;
     private LocalDate exitDate;
     private int genderId;
+    private String userId;
 
 
-    @MappedCollection(idColumn = "employee_key")
+    @MappedCollection(idColumn = "EMPLOYEE_KEY")
     private DepartmentEmployeeRelation departmentEmployeeRelation;
 
-    @MappedCollection(idColumn = "employee_key")
+    @MappedCollection(idColumn = "EMPLOYEE_KEY")
     private SkillEmployeeRelation skillEmployeeRelation;
+
+    @MappedCollection(idColumn = "EMPLOYEE_KEY")
+    private ProjectEmployeeRelation projectEmployeeRelation;
+
 }

@@ -36,7 +36,8 @@ CREATE TABLE `employee` (
                             `birth_date` date,
                             `entry_date` date,
                             `exit_date` date,
-                            `gender_id` int
+                            `gender_id` int,
+                            `user_id` varchar(255)
 );
 
 CREATE TABLE `gender` (
@@ -50,6 +51,7 @@ CREATE TABLE `department` (
 );
 
 CREATE TABLE `department_employee_relation` (
+                                                `department_employee_relation_id` int PRIMARY KEY AUTO_INCREMENT,
                                                 `department_key` int,
                                                 `employee_key` int,
                                                 `valid_from` date,
