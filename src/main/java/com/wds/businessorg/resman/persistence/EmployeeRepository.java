@@ -10,6 +10,7 @@ import org.springframework.jdbc.core.RowMapper;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.Collections;
 import java.util.List;
 
 public interface EmployeeRepository extends PagingAndSortingRepository<Employee,Integer> {
@@ -38,13 +39,13 @@ public interface EmployeeRepository extends PagingAndSortingRepository<Employee,
             employee.setLastName(rs.getString("last_name"));
             employee.setBirthDate(rs.getDate("birth_date").toLocalDate());
 
-            DepartmentEmployeeRelation DepartmentEmployeeRelation = new DepartmentEmployeeRelation();
-            DepartmentEmployeeRelation.setDepartmentKey(rs.getInt("department_key"));
-            DepartmentEmployeeRelation.setEmployeeKey(rs.getInt("employee_key"));
-            DepartmentEmployeeRelation.setValidFrom(rs.getDate("valid_from").toLocalDate());
-            DepartmentEmployeeRelation.setValidTo(rs.getDate("valid_to").toLocalDate());
+            DepartmentEmployeeRelation departmentEmployeeRelation = new DepartmentEmployeeRelation();
+            departmentEmployeeRelation.setDepartmentKey(rs.getInt("department_key"));
+            departmentEmployeeRelation.setEmployeeKey(rs.getInt("employee_key"));
+            departmentEmployeeRelation.setValidFrom(rs.getDate("valid_from").toLocalDate());
+            departmentEmployeeRelation.setValidTo(rs.getDate("valid_to").toLocalDate());
 
-            employee.setDepartmentEmployeeRelation(DepartmentEmployeeRelation);
+            employee.setDepartmentEmployeeRelations(Collections.singletonList(departmentEmployeeRelation));
 
             return employee;
         }

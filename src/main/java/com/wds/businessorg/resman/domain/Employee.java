@@ -7,6 +7,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.MappedCollection;
 
 import java.time.LocalDate;
+import java.util.Collection;
 import java.util.Objects;
 
 
@@ -26,12 +27,15 @@ public class Employee {
 
 
     @MappedCollection(idColumn = "EMPLOYEE_KEY")
-    private DepartmentEmployeeRelation departmentEmployeeRelation;
+    private Collection<DepartmentEmployeeRelation> departmentEmployeeRelations;
 
     @MappedCollection(idColumn = "EMPLOYEE_KEY")
-    private SkillEmployeeRelation skillEmployeeRelation;
+    private Collection<SkillEmployeeRelation> skillEmployeeRelations;
 
     @MappedCollection(idColumn = "EMPLOYEE_KEY")
-    private ProjectEmployeeRelation projectEmployeeRelation;
+    private Collection<ProjectEmployeeRelation> projectEmployeeRelations;
+
+    @MappedCollection(idColumn = "EMPLOYEE_KEY")
+    private Collection<ImageEmployeeRelation> imageEmployeeRelations;
 
 }

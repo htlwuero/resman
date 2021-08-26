@@ -4,10 +4,14 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class ImageEntityRelation {
+public class ImageDepartmentRelation {
     private int  imageId;
-    private int entityKey;
+    private int departmentKey;
+    private LocalDate validFrom;
+    private LocalDate validTo;
 }

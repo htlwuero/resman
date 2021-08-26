@@ -22,6 +22,8 @@ public class Department {
     @MappedCollection(idColumn = "DEPARTMENT_KEY")
     private Collection<DepartmentEmployeeRelation> departmentEmployeeRelations;
 
+    @MappedCollection(idColumn = "DEPARTMENT_KEY")
+    private Collection<ImageDepartmentRelation> imageDepartmentRelations;
 
 
 }

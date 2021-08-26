@@ -15,12 +15,17 @@ insert into communication_type values(0, 'email');
 insert into communication_type values(1, 'phone_number');
 
 insert into employee(first_name, last_name, birth_date, entry_date, exit_date, gender_id, user_id) values('Fabian','Linder','2003-08-24', '2021-07-26', '2021-08-20', 1 ,'FB');
+insert into employee(first_name, last_name, birth_date, entry_date, exit_date, gender_id, user_id) values('Markus','Dürr','1995-08-24', '2021-07-26', '2028-08-20', 1 ,'DRR');
+insert into employee(first_name, last_name, birth_date, entry_date, exit_date, gender_id) values('Dominik','Zeiler','2003-10-25', '2024-09-09', '2046-01-02', 1);
+insert into employee(first_name, last_name, birth_date, entry_date, exit_date, gender_id) values('Maximilian','Hofer','2004-03-20', '2014-03-10', '2024-03-10', 1);
+insert into employee(first_name, last_name, birth_date, entry_date, exit_date, gender_id, user_id) values('Sandro','Perstling','1992-08-24', '2021-07-26', '2021-08-20', 1 ,'PSC');
+insert into employee(first_name, last_name, birth_date, entry_date, exit_date, gender_id, user_id) values('Thomas','Bamberger','2005-08-24', '2021-07-26', '2021-08-20', 1 ,'TB');
+insert into employee(first_name, last_name, birth_date, entry_date, exit_date, gender_id, user_id) values('Zenon','Huskic','1989-08-24', '2021-07-26', '2021-08-20', 1 ,'HZ');
 insert into employee(first_name, last_name, birth_date, entry_date, exit_date, gender_id, user_id) values('Franz','Saler','1974-06-12', '2010-05-12', '2024-09-11', 1 ,'FS');
 insert into employee(first_name, last_name, birth_date, entry_date, exit_date, gender_id, user_id) values('Wilfried','Bosch','1970-02-12', '2002-10-11', '2022-02-01', 1 ,'WB');
 insert into employee(first_name, last_name, birth_date, entry_date, exit_date, gender_id) values('Anna','Renddorf','1992-04-05', '2018-09-02', '2026-12-31', 2);
 insert into employee(first_name, last_name, birth_date, entry_date, exit_date, gender_id) values('Franziska','Neuhaus','1967-08-24', '1998-03-18', '2021-12-31', 2);
 insert into employee(first_name, last_name, birth_date, entry_date, exit_date, gender_id) values('Julia','Eibl','1995-11-08', '2018-09-02', '2026-12-31', 2);
-insert into employee(first_name, last_name, birth_date, entry_date, exit_date, gender_id) values('Maximilian','Hofer','2004-03-20', '2014-03-10', '2024-03-10', 1);
 insert into employee(first_name, last_name, birth_date, entry_date, exit_date, gender_id) values('Lionel','Messi','1987-06-24', '2021-08-10', '2024-07-10', 1);
 insert into employee(first_name, last_name, birth_date, entry_date, exit_date, gender_id) values('Jack','Miller','1995-01-18', '2021-08-15', '2028-01-24', 1);
 insert into employee(first_name, last_name, birth_date, entry_date, exit_date, gender_id) values('Brad','Binder','1995-08-11', '2020-06-25', '2030-03-27', 1);
@@ -28,7 +33,6 @@ insert into employee(first_name, last_name, birth_date, entry_date, exit_date, g
 insert into employee(first_name, last_name, birth_date, entry_date, exit_date, gender_id) values('Aleksander','Kazantseva','1955-07-22', '1989-01-15', '2010-12-10', 1);
 insert into employee(first_name, last_name, birth_date, entry_date, exit_date, gender_id) values('Julia','Yuryeva','1977-05-23', '1992-08-13', '2031-12-11', 0);
 insert into employee(first_name, last_name, birth_date, entry_date, exit_date, gender_id) values('Kristina','Cosic','1992-03-22', '2010-05-15', '2039-04-20', 0);
-insert into employee(first_name, last_name, birth_date, entry_date, exit_date, gender_id) values('Dominik','Zeiler','2003-10-25', '2024-09-09', '2046-01-02', 1);
 insert into employee(first_name, last_name, birth_date, entry_date, exit_date, gender_id) values('Josef','Unterberger','1943-05-05', '1994-03-01', '2012-01-01', 1);
 insert into employee(first_name, last_name, birth_date, entry_date, exit_date, gender_id) values('Sergio','Ramos','1978-12-31', '2021-09-01', '2025-07-08', 1);
 insert into employee(first_name, last_name, birth_date, entry_date, exit_date, gender_id) values('Nasser','Al-Khelaifi','1973-11-12', '2016-12-28', '2027-01-03', 1);
@@ -125,10 +129,12 @@ insert into communication( employee_id, communication_type_id, communication_val
 
 
 insert into department(department) values('business');
-insert into department(department) values('development');
-insert into department(department) values('recruiting');
 insert into department(department) values('compliance');
+insert into department(department) values('development core');
+insert into department(department) values('development ux');
 insert into department(department) values('marketing');
+insert into department(department) values('recruiting');
+
 
 insert into department_employee_relation( department_key, employee_key, valid_from, valid_to) values( 2, 1, '2021-07-26', '2021-08-20');
 insert into department_employee_relation( department_key, employee_key, valid_from, valid_to) values( 3, 2, '2010-05-12', '2024-09-11');
@@ -166,24 +172,27 @@ insert into image values (3, FILE_READ('src\main\resources\images\departments\Co
 insert into image values (4, FILE_READ('src\main\resources\images\departments\Development_1.png'));
 insert into image values (5, FILE_READ('src\main\resources\images\departments\Development_2.png'));
 insert into image values (6, FILE_READ('src\main\resources\images\departments\Marketing.png'));
-insert into image values (7, FILE_READ('src\main\resources\images\departments\Recruiting.png'));
+insert into image values (7, FILE_READ('src\main\resources\images\departments\Recruitment.png'));
 insert into image values (8, FILE_READ('src\main\resources\images\employees\Fabian-Linder.png'));
 insert into image values (9, FILE_READ('src\main\resources\images\employees\Markus-Dürr.png'));
 insert into image values (10, FILE_READ('src\main\resources\images\employees\Dominik-Zeiler.png'));
 insert into image values (11, FILE_READ('src\main\resources\images\employees\Maximillian-Hofer.png'));
 insert into image values (12, FILE_READ('src\main\resources\images\employees\Sandro-Perstling.png'));
 insert into image values (13, FILE_READ('src\main\resources\images\employees\Thomas-Bamberger.png'));
+insert into image values (14, FILE_READ('src\main\resources\images\employees\Zenon-Huskic.png'));
 
-insert into image_entity_relation values (1, 1, 'employee');
-insert into image_entity_relation values (2, 1, 'department');
-insert into image_entity_relation values (3, 2, 'employee');
-insert into image_entity_relation values (4, 2, 'department');
-insert into image_entity_relation values (5, 3, 'employee');
-insert into image_entity_relation values (6, 3, 'department');
-insert into image_entity_relation values (7, 4, 'employee');
-insert into image_entity_relation values (8, 4, 'department');
-insert into image_entity_relation values (9, 5, 'employee');
-insert into image_entity_relation values (10, 5, 'department');
-insert into image_entity_relation values (11, 6, 'employee');
-insert into image_entity_relation values (12, 6, 'department');
-insert into image_entity_relation values (13, 6, 'employee');
+
+insert into image_department_relation values (2, 1, '1992-08-13', '2031-12-11');
+insert into image_department_relation values (3, 2, '1992-08-13', '2031-12-11');
+insert into image_department_relation values (4, 3, '1992-08-13', '2031-12-11');
+insert into image_department_relation values (5, 4, '1992-08-13', '2031-12-11');
+insert into image_department_relation values (6, 5, '1992-08-13', '2031-12-11');
+insert into image_department_relation values (7, 6, '1992-08-13', '2031-12-11');
+insert into image_employee_relation values (8, 1, '1992-08-13', '2031-12-11');
+insert into image_employee_relation values (9, 2, '1992-08-13', '2031-12-11');
+insert into image_employee_relation values (10, 3, '1992-08-13', '2031-12-11');
+insert into image_employee_relation values (11, 4, '1992-08-13', '2031-12-11');
+insert into image_employee_relation values (12, 5, '1992-08-13', '2031-12-11');
+insert into image_employee_relation values (13, 6, '1992-08-13', '2031-12-11');
+insert into image_employee_relation values (1, 7, '1992-08-13', '2031-12-11');
+insert into image_employee_relation values (14, 7, '1992-08-13', '2031-12-11');

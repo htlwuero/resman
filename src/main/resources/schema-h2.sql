@@ -89,10 +89,18 @@ CREATE TABLE `image` (
                          `content` blob
 );
 
-CREATE TABLE `image_entity_relation` (
-                                         `image_id` int,
-                                         `entity_id` int,
-                                         `entity_type` varchar(255)
+CREATE TABLE `image_department_relation` (
+                                             `image_id` int,
+                                             `department_key` int,
+                                             `valid_from` date,
+                                             `valid_to` date
+);
+
+CREATE TABLE `image_employee_relation` (
+                                           `image_id` int,
+                                           `employee_key` int,
+                                           `valid_from` date,
+                                           `valid_to` date
 );
 
 CREATE TABLE `skill` (
@@ -159,11 +167,13 @@ ALTER TABLE `employee` ADD FOREIGN KEY (`gender_id`) REFERENCES `gender` (`gende
 
 ALTER TABLE `communication` ADD FOREIGN KEY (`communication_type_id`) REFERENCES `communication_type` (`communication_type_id`);
 
-ALTER TABLE `image_entity_relation` ADD FOREIGN KEY (`image_id`) REFERENCES `image` (`image_id`);
+ALTER TABLE `image_employee_relation` ADD FOREIGN KEY (`image_id`) REFERENCES `image` (`image_id`);
 
-ALTER TABLE `image_entity_relation` ADD FOREIGN KEY (`entity_id`) REFERENCES `employee` (`employee_id`);
+ALTER TABLE `image_department_relation` ADD FOREIGN KEY (`image_id`) REFERENCES `image` (`image_id`);
 
-ALTER TABLE `image_entity_relation` ADD FOREIGN KEY (`entity_id`) REFERENCES `department` (`department_id`);
+ALTER TABLE `image_employee_relation` ADD FOREIGN KEY (`employee_key`) REFERENCES `employee` (`employee_id`);
+
+ALTER TABLE `image_department_relation` ADD FOREIGN KEY (`department_key`) REFERENCES `department` (`department_id`);
 
 ALTER TABLE `skill_employee_relation` ADD FOREIGN KEY (`skill_id`) REFERENCES `skill` (`skill_id`);
 
