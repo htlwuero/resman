@@ -159,7 +159,7 @@ ALTER TABLE `employee` ADD FOREIGN KEY (`gender_id`) REFERENCES `gender` (`gende
 
 ALTER TABLE `communication` ADD FOREIGN KEY (`communication_type_id`) REFERENCES `communication_type` (`communication_type_id`);
 
-ALTER TABLE `image` ADD FOREIGN KEY (`image_id`) REFERENCES `image_entity_relation` (`image_id`);
+ALTER TABLE `image_entity_relation` ADD FOREIGN KEY (`image_id`) REFERENCES `image` (`image_id`);
 
 ALTER TABLE `image_entity_relation` ADD FOREIGN KEY (`entity_id`) REFERENCES `employee` (`employee_id`);
 
