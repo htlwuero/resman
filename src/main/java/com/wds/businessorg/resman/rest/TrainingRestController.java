@@ -1,9 +1,11 @@
 package com.wds.businessorg.resman.rest;
 
 
+import com.wds.businessorg.resman.domain.Image;
 import com.wds.businessorg.resman.domain.Training;
 import com.wds.businessorg.resman.persistence.TrainingRepository;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
@@ -27,5 +29,10 @@ public class TrainingRestController {
         }
         return trainings;
 
+    }
+    @GetMapping("trainings/{id}")
+    public Training getTrainingById(@PathVariable int id) {
+        return trainingRepository.findById(id)
+                .orElse(null);
     }
 }

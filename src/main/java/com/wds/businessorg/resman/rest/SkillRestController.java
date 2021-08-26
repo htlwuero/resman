@@ -1,8 +1,10 @@
 package com.wds.businessorg.resman.rest;
 
+import com.wds.businessorg.resman.domain.Image;
 import com.wds.businessorg.resman.domain.Skill;
 import com.wds.businessorg.resman.persistence.SkillRepository;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
@@ -26,5 +28,10 @@ public class SkillRestController {
         }
         return skills;
 
+    }
+    @GetMapping("skills/{id}")
+    public Skill getSkillById(@PathVariable int id) {
+        return skillRepository.findById(id)
+                .orElse(null);
     }
 }

@@ -12,4 +12,7 @@ public class Position {
     @Id
     private int  positionId;
     private String name;
+
+    public void add(Position position) {
+    }
 }

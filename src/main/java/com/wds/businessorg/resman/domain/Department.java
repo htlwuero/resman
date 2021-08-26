@@ -19,7 +19,7 @@ public class Department {
 
     private String department;
 
-    @MappedCollection(idColumn = "department_key")
+    @MappedCollection(idColumn = "DEPARTMENT_KEY")
     private Collection<DepartmentEmployeeRelation> departmentEmployeeRelations;
 
 

@@ -1,8 +1,10 @@
 package com.wds.businessorg.resman.rest;
 
+import com.wds.businessorg.resman.domain.Image;
 import com.wds.businessorg.resman.domain.Project;
 import com.wds.businessorg.resman.persistence.ProjectRepository;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
@@ -26,5 +28,10 @@ public class ProjectRestController {
         }
         return projects;
 
+    }
+    @GetMapping("projects/{id}")
+    public Project getProjectById(@PathVariable int id) {
+        return projectRepository.findById(id)
+                .orElse(null);
     }
 }

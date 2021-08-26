@@ -1,13 +1,17 @@
 package com.wds.businessorg.resman.rest;
 
 import com.wds.businessorg.resman.domain.Component;
+import com.wds.businessorg.resman.domain.Image;
 import com.wds.businessorg.resman.persistence.ComponentRepository;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@CrossOrigin(value = "*")
 @RestController
 public class ComponentRestController {
 
@@ -26,5 +30,10 @@ public class ComponentRestController {
         }
         return components;
 
+    }
+    @GetMapping("componets/{id}")
+    public Component getComponentById(@PathVariable int id) {
+        return componentRepository.findById(id)
+                .orElse(null);
     }
 }
