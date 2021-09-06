@@ -16,6 +16,7 @@ drop table if exists skill_employee_relation;
 drop table if exists training;
 drop table if exists training_employee_relation;
 drop table if exists component;
+drop table if exists component_department_relation;
 drop table if exists component_employee_relation;
 drop table if exists position;
 drop table if exists communication_type;

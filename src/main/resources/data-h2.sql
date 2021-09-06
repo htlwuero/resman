@@ -127,14 +127,12 @@ insert into communication( employee_id, communication_type_id, communication_val
 insert into communication( employee_id, communication_type_id, communication_value, valid_from, valid_to) values( 28, '0', 'Erling.Haaland@gmail.com', '2017-01-02', '2057-01-02');
 insert into communication( employee_id, communication_type_id, communication_value, valid_from, valid_to) values( 29, '0', 'Jack19_Grealish@hotmail', '2022-01-02', '2056-01-02');
 
-
 insert into department(department) values('business');
 insert into department(department) values('compliance');
 insert into department(department) values('development core');
 insert into department(department) values('development ux');
 insert into department(department) values('marketing');
 insert into department(department) values('recruiting');
-
 
 insert into department_employee_relation( department_key, employee_key, valid_from, valid_to) values( 2, 1, '2021-07-26', '2021-08-20');
 insert into department_employee_relation( department_key, employee_key, valid_from, valid_to) values( 3, 2, '2010-05-12', '2024-09-11');
