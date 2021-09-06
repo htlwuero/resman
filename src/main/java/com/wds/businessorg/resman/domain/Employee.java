@@ -26,16 +26,16 @@ public class Employee {
     private String userId;
 
 
-    @MappedCollection(idColumn = "EMPLOYEE_KEY")
+    @MappedCollection(idColumn = "employee_key")
     private Collection<DepartmentEmployeeRelation> departmentEmployeeRelations;
 
-    @MappedCollection(idColumn = "EMPLOYEE_KEY")
+    @MappedCollection(idColumn = "employee_key")
     private Collection<SkillEmployeeRelation> skillEmployeeRelations;
 
-    @MappedCollection(idColumn = "EMPLOYEE_KEY")
+    @MappedCollection(idColumn = "employee_key")
     private Collection<ProjectEmployeeRelation> projectEmployeeRelations;
 
-    @MappedCollection(idColumn = "EMPLOYEE_KEY")
+    @MappedCollection(idColumn = "employee_key")
     private Collection<ImageEmployeeRelation> imageEmployeeRelations;
 
 }
