@@ -1,14 +1,24 @@
-drop table if exists person;
-drop table if exists departmentold;
-drop table if exists department_person_relation;
-drop table if exists employee cascade ;
+drop table if exists person cascade;
+drop table if exists departmentold cascade;
+drop table if exists department_person_relation cascade;
+drop table if exists employee cascade;
 drop table if exists gender cascade;
-drop table if exists communication_type cascade;
 drop table if exists department cascade;
 drop table if exists department_employee_relation cascade;
 drop table if exists project cascade;
 drop table if exists project_employee_relation cascade;
 drop table if exists communication cascade;
+drop table if exists image cascade;
+drop table if exists image_department_relation cascade;
+drop table if exists image_employee_relation cascade;
+drop table if exists skill cascade;
+drop table if exists skill_employee_relation cascade;
+drop table if exists training cascade;
+drop table if exists training_employee_relation cascade;
+drop table if exists component cascade;
+drop table if exists component_employee_relation cascade;
+drop table if exists position cascade;
+drop table if exists communication_type cascade;
 
 create table person
 (

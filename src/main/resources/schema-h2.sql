@@ -8,7 +8,17 @@ drop table if exists department_employee_relation;
 drop table if exists project;
 drop table if exists project_employee_relation;
 drop table if exists communication;
-
+drop table if exists image;
+drop table if exists image_department_relation;
+drop table if exists image_employee_relation;
+drop table if exists skill;
+drop table if exists skill_employee_relation;
+drop table if exists training;
+drop table if exists training_employee_relation;
+drop table if exists component;
+drop table if exists component_employee_relation;
+drop table if exists position;
+drop table if exists communication_type;
 
 create table person
 (
@@ -118,7 +128,7 @@ CREATE TABLE `training` (
                             `name` varchar(255)
 );
 
-CREATE TABLE `training_entity_relation` (
+CREATE TABLE `training_employee_relation` (
                                             `training_id` int,
                                             `employee_id` int,
                                             `planed_from` date,
@@ -179,9 +189,9 @@ ALTER TABLE `skill_employee_relation` ADD FOREIGN KEY (`skill_id`) REFERENCES `s
 
 ALTER TABLE `skill_employee_relation` ADD FOREIGN KEY (`employee_key`) REFERENCES `employee` (`employee_id`);
 
-ALTER TABLE `training_entity_relation` ADD FOREIGN KEY (`training_id`) REFERENCES `training` (`training_id`);
+ALTER TABLE `training_employee_relation` ADD FOREIGN KEY (`training_id`) REFERENCES `training` (`training_id`);
 
-ALTER TABLE `training_entity_relation` ADD FOREIGN KEY (`employee_id`) REFERENCES `employee` (`employee_id`);
+ALTER TABLE `training_employee_relation` ADD FOREIGN KEY (`employee_id`) REFERENCES `employee` (`employee_id`);
 
 ALTER TABLE `component_employee_relation` ADD FOREIGN KEY (`employee_id`) REFERENCES `employee` (`employee_id`);
 

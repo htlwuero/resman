@@ -9,7 +9,7 @@ import java.time.LocalDate;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class TrainingEntityRelation {
+public class TrainingEmployeeRelation {
     private int  trainingId;
     private int employeeKey;
     private LocalDate planedFrom ;
